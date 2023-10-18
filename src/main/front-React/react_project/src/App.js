@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-            1시 29분 커밋 and push 테스트
+            노트북에서 커밋 테스트
         </a>
       </header>
     </div>
