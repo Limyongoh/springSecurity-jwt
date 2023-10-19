@@ -2,11 +2,11 @@
 
 - 모든 파일에 적용될 css
 id, class 형식
-ex) id : 해당파일명_id
-ex) class: 해달파일명_class
+ex) id : 해당파일 경로 directory명_id
+ex) class: 해달파일 경로 directory명_class
 
-**/
-
+파일별로 파일명 css start~ end 주석추가
+ex) 기존 파일들 참고
 
 
 /*
@@ -27,9 +27,15 @@ body {
 ---------------------------- Login_index css start --------------------------------------------
 */
 
-#Login_index_div {
-    background-color: aqua;
+#Login_content {
+    margin-top: 32px;
+    display: flex;
+    align-items : center;
+    justify-content:center; 
+    height: 100%;
+    
 }
+
 /*
 ---------------------------- Login_index css end ---------------------------------------------
 */
