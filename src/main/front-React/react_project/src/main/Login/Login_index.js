@@ -114,9 +114,6 @@ function Login() {
             <HorizontalLine text='또는'/>
             
             <KakaoLogin_style>
-              <span onClick={(e)=>{alert("카카오 ㄱ로그인")}}>
-                카카오 로그인
-              </span>
               <img src={kakaLogin}></img>
             </KakaoLogin_style>
 
