@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+/src/main/front-React/react_project/.env.development
+/src/main/front-React/react_project/.env.production

@@ -9,7 +9,7 @@ import {TextField,
         Button,
   } from "@mui/material";
 
-import kakaLogin from 'image/kakao_login.png';
+import KakaLoginImage from 'image/kakao_login.png';
 
 import {useState} from 'react';
 import axios from 'axios'
@@ -72,6 +72,21 @@ function Login() {
     console.log(response);
   }
 
+  const kakaLogin = (e) =>{
+    const url = 'https://kauth.kakao.com/oauth/authorize?client_id=' +
+          process.env.REACT_APP_KAKAO_JS_KEY +
+          '&redirect_uri=' +
+          process.env.REACT_APP_KAKAO_REDIRECT_URL +
+          '&response_type=code&' +
+          'profile_nickname profile_image';
+
+          console.log("REACT_APP_KAKAO_JS_KEY -->" +process.env.REACT_APP_KAKAO_JS_KEY);
+
+          console.log("REACT_APP_KAKAO_REDIRECT_URL -->" +process.env.REACT_APP_KAKAO_REDIRECT_URL);
+
+    window.location.href = url;
+  }
+
   return (
     <>
       <div id = "Login_content">
@@ -114,7 +129,7 @@ function Login() {
             <HorizontalLine text='또는'/>
             
             <KakaoLogin_style>
-              <img src={kakaLogin}></img>
+              <img src={KakaLoginImage} onClick={(e)=> kakaLogin()}></img>
             </KakaoLogin_style>
 
             <PasswordSearch_styled onClick={(e)=>{alert("비밀번호찾기")}}>
