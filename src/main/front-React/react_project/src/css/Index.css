@@ -33,7 +33,14 @@ body {
     align-items : center;
     justify-content:center; 
     height: 100%;
-    
+}
+
+#Login_registe {
+    margin-top: 32px;
+    display: flex;
+    align-items : center;
+    justify-content:center; 
+    height: 100%;
 }
 
 /*

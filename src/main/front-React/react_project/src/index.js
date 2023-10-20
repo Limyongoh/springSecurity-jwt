@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Login from './main/Login/Login_index';
-import reportWebVitals from '../src/reportWebVitals';
+import Login from 'main/Login/Login_index';
+import reportWebVitals from 'reportWebVitals';
 import './css/Index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
