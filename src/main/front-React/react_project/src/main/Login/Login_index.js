@@ -77,14 +77,17 @@ function Login() {
           process.env.REACT_APP_KAKAO_JS_KEY +
           '&redirect_uri=' +
           process.env.REACT_APP_KAKAO_REDIRECT_URL +
-          '&response_type=code&' +
-          'profile_nickname profile_image';
+          '&response_type=code' 
+          +'&prompt=login'  // 로그인 여부 상관없이 무조건 로그인
+          //+'&prompt=none'   // 자동로그인
+          // +'&profile_nickname profile_image'
+          ;
 
-          console.log("REACT_APP_KAKAO_JS_KEY -->" +process.env.REACT_APP_KAKAO_JS_KEY);
-
-          console.log("REACT_APP_KAKAO_REDIRECT_URL -->" +process.env.REACT_APP_KAKAO_REDIRECT_URL);
-
+    // console.log("REACT_APP_KAKAO_JS_KEY -->" +process.env.REACT_APP_KAKAO_JS_KEY);
+    // console.log("REACT_APP_KAKAO_REDIRECT_URL -->" +process.env.REACT_APP_KAKAO_REDIRECT_URL);
     window.location.href = url;
+    let code = new URL(window.location.href);
+    console.log("code --> "+ code);
   }
 
   return (
