@@ -9,7 +9,10 @@ import {TextField,
         Button,
   } from "@mui/material";
 
+import kakaLogin from 'image/kakao_login.png';
+
 import {useState} from 'react';
+import axios from 'axios'
 
 import HorizontalLine from "css/HorizontalLine";
 
@@ -63,6 +66,12 @@ function Login() {
   }
 
 
+  // api 호출 테스트 완료
+  const  apiCall = async (e) =>{
+    const response = await axios.get('/test/home');
+    console.log(response);
+  }
+
   return (
     <>
       <div id = "Login_content">
@@ -108,13 +117,19 @@ function Login() {
               <span onClick={(e)=>{alert("카카오 ㄱ로그인")}}>
                 카카오 로그인
               </span>
+              <img src={kakaLogin}></img>
             </KakaoLogin_style>
 
             <PasswordSearch_styled onClick={(e)=>{alert("비밀번호찾기")}}>
               비밀번호를 잊으셨나요?
             </PasswordSearch_styled>
             
-
+            {/* <Button 
+              style={{width:"300px"}} 
+              variant="contained"
+              onClick={(e)=>{apiCall(e)}}>
+                api 호출 테스트
+            </Button> */}
         </LoginInner_setyled>
 
       </div>
