@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect } from 'react';
 
 
-function KakaoCallBack() {
+function KakaoRedirect_react() {
     
     useEffect(()=>{
         const params = new URL(document.location.toString()).searchParams;
@@ -12,7 +12,7 @@ function KakaoCallBack() {
         const client_id = process.env.REACT_APP_KAKAO_REST_API_KEY;
         const redirect_uri = process.env.REACT_APP_KAKAO_REDIRECT_URL;
 
-
+        debugger;
         axios.post(`https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${client_id}&redirect_url=${redirect_uri}&code=${code}`,
         {},
         {
@@ -45,10 +45,10 @@ function KakaoCallBack() {
   
     return (
       <>
-        callback
+        Redirect - react
       </>
     );
   }
   
-  export default KakaoCallBack;
+  export default KakaoRedirect_react;
   

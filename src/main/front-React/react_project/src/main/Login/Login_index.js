@@ -68,26 +68,35 @@ function Login() {
 
   // api 호출 테스트 완료
   const  apiCall = async (e) =>{
-    const response = await axios.get('/test/home');
+    const response = await axios.get('/api/test/home');
     console.log(response);
   }
 
-  const kakaLogin = (e) =>{
-    const url = 'https://kauth.kakao.com/oauth/authorize?client_id=' +
-          process.env.REACT_APP_KAKAO_JS_KEY +
-          '&redirect_uri=' +
-          process.env.REACT_APP_KAKAO_REDIRECT_URL +
-          '&response_type=code' 
-          +'&prompt=login'  // 로그인 여부 상관없이 무조건 로그인
-          //+'&prompt=none'   // 자동로그인
-          // +'&profile_nickname profile_image'
-          ;
+  /*
+    -----------------   kakao login정보 반환 font-end 에서 처리할 경우 --------------
+  
+    const kakaLogin_react = (e) =>{
+      const url = 'https://kauth.kakao.com/oauth/authorize?client_id=' +
+            process.env.REACT_APP_KAKAO_JS_KEY +
+            '&redirect_uri=' +
+            process.env.REACT_APP_KAKAO_REDIRECT_URL +
+            '&response_type=code' 
+            +'&prompt=login'  // 로그인 여부 상관없이 무조건 로그인
+            //+'&prompt=none'   // 자동로그인
+            // +'&profile_nickname profile_image'
+            ;
 
-    // console.log("REACT_APP_KAKAO_JS_KEY -->" +process.env.REACT_APP_KAKAO_JS_KEY);
-    // console.log("REACT_APP_KAKAO_REDIRECT_URL -->" +process.env.REACT_APP_KAKAO_REDIRECT_URL);
-    window.location.href = url;
-    let code = new URL(window.location.href);
-    console.log("code --> "+ code);
+      // console.log("REACT_APP_KAKAO_JS_KEY -->" +process.env.REACT_APP_KAKAO_JS_KEY);
+      window.location.href = url;
+      let code = new URL(window.location.href);
+      console.log("code --> "+ code);
+    }
+  */
+
+  const kakaLogin_java = async (e) =>{
+    
+    window.location.href = 'http://localhost:8080/oauth/kakao';
+    
   }
 
   return (
@@ -132,19 +141,26 @@ function Login() {
             <HorizontalLine text='또는'/>
             
             <KakaoLogin_style>
-              <img src={KakaLoginImage} onClick={(e)=> kakaLogin()}></img>
+              <img 
+                src={KakaLoginImage} 
+                onClick={(e)=> {
+                    // kakaLogin();
+                    kakaLogin_java();
+                  }
+                }>
+              </img>
             </KakaoLogin_style>
 
             <PasswordSearch_styled onClick={(e)=>{alert("비밀번호찾기")}}>
               비밀번호를 잊으셨나요?
             </PasswordSearch_styled>
             
-            {/* <Button 
+            <Button 
               style={{width:"300px"}} 
               variant="contained"
               onClick={(e)=>{apiCall(e)}}>
                 api 호출 테스트
-            </Button> */}
+            </Button>
         </LoginInner_setyled>
 
       </div>
