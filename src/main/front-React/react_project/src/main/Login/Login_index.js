@@ -109,7 +109,7 @@ function Login() {
 
           <TextField
           style={{width :"300px"}}
-            label="ID"
+            label="Email"
             variant="outlined"
             size="small"/>
             

@@ -1,7 +1,7 @@
 package com.todo.settingProject.oauth.infraType.kakao;
 
-import com.todo.settingProject.oauth.Type.OauthServerType;
-import com.todo.settingProject.oauth.authcode.AuthCodeRequestUrlProvider;
+import com.todo.settingProject.oauth.type.OauthServerType;
+import com.todo.settingProject.oauth.domain.authcode.AuthCodeRequestUrlProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +16,9 @@ public class KakaoAuthCodeRequestUrlProvider implements AuthCodeRequestUrlProvid
 
     private final KakaoOauthConfig kakaoOauthConfig;
 
+    /**
+     * KakaoAuthCodeRequestUrlProvider으로 생성된 메서드 호출 시 자동 호출
+     */
     @Override
     public OauthServerType supportServer() {
         return OauthServerType.KAKAO;

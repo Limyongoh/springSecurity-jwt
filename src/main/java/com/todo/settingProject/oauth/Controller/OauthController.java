@@ -1,17 +1,17 @@
 package com.todo.settingProject.oauth.Controller;
 
-import com.todo.settingProject.oauth.Type.OauthServerType;
+import com.todo.settingProject.oauth.domain.OauthMember;
+import com.todo.settingProject.oauth.type.OauthServerType;
+import com.todo.settingProject.oauth.infraType.kakao.client.KakaoApiClientImpl;
 import com.todo.settingProject.oauth.service.OauthService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+// oauth 타입별 로그인 기능 구현중
 @RestController
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
@@ -19,11 +19,10 @@ public class OauthController {
 
     private final OauthService oauthService;
 
+    private final KakaoApiClientImpl kakaoApiClientImpl;
 
     /**
-     *
-     * oauth 타입별 로그인 기능 구현중
-     *
+     * kakao Redirect url 받아오기
      */
     @GetMapping("/{oauthServerType}")
     public ResponseEntity<Void> kakao(@PathVariable OauthServerType oauthServerType,
@@ -31,7 +30,18 @@ public class OauthController {
 
         String redirectUrl = oauthService.getAuthCodeRequestUrl(oauthServerType);
         response.sendRedirect(redirectUrl);
-        //response.sendRedirect("http://localhost:3000");
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * kakao 로그인
+     */
+    @GetMapping("/login/{oauthServerType}")
+    public ResponseEntity loginKakao(@PathVariable OauthServerType oauthServerType,
+                                     @RequestParam String code){
+        OauthMember oauthMember = oauthService.login(oauthServerType, code);
+        return ResponseEntity.ok("이름"+ oauthMember.nickname()+"\n email "+ oauthMember.email()
+        );
+    }
+
 }
