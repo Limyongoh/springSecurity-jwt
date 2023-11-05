@@ -26,12 +26,22 @@ body {
 /*
 ---------------------------- Login_index css start --------------------------------------------
 */
-
-#Login_content {
-    margin-top: 32px;
+#login_div {
+    display: flex;
     display: flex;
     align-items : center;
     justify-content:center; 
+}
+
+#img_div{
+    margin-left: 30px;
+    margin-right: 30px;
+    
+}
+#Login_content {
+    margin-top: 32px;
+    
+    flex-direction:column;
     height: 100%;
 }
 
