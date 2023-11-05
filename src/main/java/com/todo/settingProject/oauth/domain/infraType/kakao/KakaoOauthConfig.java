@@ -1,4 +1,4 @@
-package com.todo.settingProject.oauth.infraType.kakao;
+package com.todo.settingProject.oauth.domain.infraType.kakao;
 
 /*
 

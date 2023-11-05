@@ -1,3 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_project1
+    username: todo
+    password: todo
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update # 처음에 create로 작성하시고 이후에는 none
+      use-new-id-generator-mappings: false   # 테이블기준 id 생성 방지
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 # oauth kakao 로그인 구현에 필요한 환경변수
 # 해당 값들은 공유가 되면 안된다고함
@@ -7,4 +21,4 @@ oauth:
     client_id:  # REST API 키
     redirect_uri: http://localhost:3000/oauth/redirected/kakao
     client_secret:  # Client Secret 키
-    scope: profile_nickname, profile_image
+    scope: profile_nickname, account_email

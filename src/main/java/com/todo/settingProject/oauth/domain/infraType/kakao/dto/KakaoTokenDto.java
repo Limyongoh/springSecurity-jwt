@@ -1,4 +1,4 @@
-package com.todo.settingProject.oauth.infraType.kakao.dto;
+package com.todo.settingProject.oauth.domain.infraType.kakao.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

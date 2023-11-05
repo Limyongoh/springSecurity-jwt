@@ -1,4 +1,4 @@
-package com.todo.settingProject.oauth.infraType.kakao;
+package com.todo.settingProject.oauth.domain.infraType.kakao;
 
 import com.todo.settingProject.oauth.type.OauthServerType;
 import com.todo.settingProject.oauth.domain.authcode.AuthCodeRequestUrlProvider;

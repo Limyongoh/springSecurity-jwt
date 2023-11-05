@@ -16,7 +16,7 @@ function KakaoRedirect_java() {
           const data = response.data; // 응답 데이터
           console.log(data);
           alert("로그인 성공: " + data)
-          navigate("/success");
+          navigate("/contnet");
       } catch (error) {
           navigate("/fail");
       }

@@ -1,9 +1,9 @@
-package com.todo.settingProject.oauth.infraType.kakao.client;
+package com.todo.settingProject.oauth.domain.infraType.kakao.client;
 
 
-import com.todo.settingProject.oauth.infraType.kakao.KakaoOauthConfig;
-import com.todo.settingProject.oauth.infraType.kakao.dto.KakaoMemberResponse;
-import com.todo.settingProject.oauth.infraType.kakao.dto.KakaoTokenDto;
+import com.todo.settingProject.oauth.domain.infraType.kakao.KakaoOauthConfig;
+import com.todo.settingProject.oauth.domain.infraType.kakao.dto.KakaoUserResponse;
+import com.todo.settingProject.oauth.domain.infraType.kakao.dto.KakaoTokenDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -79,7 +79,7 @@ public class KakaoApiClientImpl {
     /**
      * kakao api를 통해 get User
      */
-    public KakaoMemberResponse getUser(String bearerToken){
+    public KakaoUserResponse getUser(String bearerToken){
         String tokenURL = "https://kapi.kakao.com/v2/user/me";
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
@@ -87,7 +87,7 @@ public class KakaoApiClientImpl {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
-        ResponseEntity<KakaoMemberResponse>  response = restTemplate.postForEntity(tokenURL,entity, KakaoMemberResponse.class);
+        ResponseEntity<KakaoUserResponse>  response = restTemplate.postForEntity(tokenURL,entity, KakaoUserResponse.class);
 
         return response.getBody();
 

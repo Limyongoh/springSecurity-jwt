@@ -1,9 +1,9 @@
-package com.todo.settingProject.oauth.infraType.kakao.dto;
+package com.todo.settingProject.oauth.domain.infraType.kakao.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.todo.settingProject.oauth.domain.OauthId;
-import com.todo.settingProject.oauth.domain.OauthMember;
+import com.todo.settingProject.oauth.common.entiy.OauthId;
+import com.todo.settingProject.oauth.domain.entity.OauthUser;
 import com.todo.settingProject.oauth.type.OauthServerType;
 
 import java.time.LocalDateTime;
@@ -12,19 +12,20 @@ import java.time.LocalDateTime;
  * kakao 계정정보(json형태)  mapping 처리
  */
 @JsonNaming(SnakeCaseStrategy.class)
-public record KakaoMemberResponse(
+public record KakaoUserResponse(
         Long id,
         boolean hasSignedUp,
         LocalDateTime connectedAt,
         KakaoAccount kakaoAccount
 ) {
 
-    public OauthMember toDomain() {
-        return OauthMember.builder()
-                .oauthId(new OauthId(String.valueOf(id), OauthServerType.KAKAO))
+    public OauthUser toDomain() {
+        return OauthUser.builder()
+                .oauthId(new OauthId(id, OauthServerType.KAKAO))
                 .nickname(kakaoAccount.profile.nickname)
-                .profileImageUrl(kakaoAccount.profile.profileImageUrl)
+                //.profileImageUrl(kakaoAccount.profile.profileImageUrl)
                 .email(kakaoAccount.email)
+
                 .build();
     }
 

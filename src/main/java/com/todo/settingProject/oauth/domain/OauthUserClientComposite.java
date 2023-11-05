@@ -1,5 +1,6 @@
 package com.todo.settingProject.oauth.domain;
 
+import com.todo.settingProject.oauth.domain.entity.OauthUser;
 import com.todo.settingProject.oauth.type.OauthServerType;
 import org.springframework.stereotype.Component;
 
@@ -8,24 +9,24 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
-public class OauthMemberClientComposite {
+public class OauthUserClientComposite {
 
-    private final Map<OauthServerType, OauthMemberClient> mapping;
+    private final Map<OauthServerType, OauthUserClient> mapping;
 
-    public OauthMemberClientComposite(Set<OauthMemberClient> clients) {
+    public OauthUserClientComposite(Set<OauthUserClient> clients) {
         mapping = clients.stream()
                 .collect(Collectors.toMap(
-                        OauthMemberClient::supportServer,
+                        OauthUserClient::supportServer,
                         Function.identity()
                 ));
         System.out.println();
     }
 
-    public OauthMember fetch(OauthServerType oauthServerType, String authCode) {
+    public OauthUser fetch(OauthServerType oauthServerType, String authCode) {
         return getClient(oauthServerType).fetch(authCode);
     }
 
-    private OauthMemberClient getClient(OauthServerType oauthServerType) {
+    private OauthUserClient getClient(OauthServerType oauthServerType) {
         return Optional.ofNullable(mapping.get(oauthServerType))
                 .orElseThrow(() -> new RuntimeException("지원하지 않는 소셜 로그인 타입입니다."));
     }

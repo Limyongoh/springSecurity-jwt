@@ -1,8 +1,8 @@
-package com.todo.settingProject.oauth.Controller;
+package com.todo.settingProject.oauth.controller;
 
-import com.todo.settingProject.oauth.domain.OauthMember;
+import com.todo.settingProject.oauth.domain.entity.OauthUser;
 import com.todo.settingProject.oauth.type.OauthServerType;
-import com.todo.settingProject.oauth.infraType.kakao.client.KakaoApiClientImpl;
+import com.todo.settingProject.oauth.domain.infraType.kakao.client.KakaoApiClientImpl;
 import com.todo.settingProject.oauth.service.OauthService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +39,8 @@ public class OauthController {
     @GetMapping("/login/{oauthServerType}")
     public ResponseEntity loginKakao(@PathVariable OauthServerType oauthServerType,
                                      @RequestParam String code){
-        OauthMember oauthMember = oauthService.login(oauthServerType, code);
-        return ResponseEntity.ok("이름"+ oauthMember.nickname()+"\n email "+ oauthMember.email()
+        OauthUser oauthUser = oauthService.login(oauthServerType, code);
+        return ResponseEntity.ok("이름"+ oauthUser.getNickname()+"\n email "+ oauthUser.getEmail()
         );
     }
 
