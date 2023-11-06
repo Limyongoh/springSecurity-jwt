@@ -26,11 +26,10 @@ body {
 /*
 ---------------------------- Login_index css start --------------------------------------------
 */
-#login_div {
-    display: flex;
+#main_div {
     display: flex;
     align-items : center;
-    justify-content:center; 
+    justify-content: center; 
 }
 
 #img_div{
@@ -38,19 +37,24 @@ body {
     margin-right: 30px;
     
 }
-#Login_content {
+#main_content {
     margin-top: 32px;
-    
-    flex-direction:column;
+    flex-direction: column;
     height: 100%;
 }
 
-#Login_registe {
+#main_registe {
     margin-top: 32px;
     display: flex;
     align-items : center;
-    justify-content:center; 
+    justify-content: center; 
     height: 100%;
+}
+
+#regist_title {
+    color: #868686;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
 /*

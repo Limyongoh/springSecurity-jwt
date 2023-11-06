@@ -23,18 +23,28 @@ public class OauthUser extends Base {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
+    @Column(name = "NAME")
+    private String name;
+
     @Embedded
     private OauthId oauthId;
 
     @Builder
     public OauthUser(User user,
-                              String nickname,
-                              String email,
-                              OauthId oauthId) {
+                    String nickname,
+                    String email,
+                    OauthId oauthId,
+                    String phoneNumber,
+                    String name) {
         this.user = user;
         this.nickname = nickname;
         this.email = email;
         this.oauthId = oauthId;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
     }
 
 }

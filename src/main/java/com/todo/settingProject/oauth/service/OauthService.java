@@ -44,6 +44,8 @@ public class OauthService {
                     .email(oauthUser.getEmail())
                     .password("")
                     .nickName(oauthUser.getNickname())
+                    .name("")
+                    .phoneNumber("")
                     .oauthAt(true)
                     .build();
 
@@ -54,6 +56,8 @@ public class OauthService {
                     .email(oauthUser.getEmail())
                     .nickname(oauthUser.getNickname())
                     .oauthId(oauthUser.getOauthId())
+                    .name("")
+                    .phoneNumber("")
                     .build();
             oauthUserRepository.save(oauth);
         }

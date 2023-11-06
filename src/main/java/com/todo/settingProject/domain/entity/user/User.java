@@ -21,14 +21,24 @@ public class User extends Base {
     @Column(name = "NICK_NAME")
     private String nickName;
 
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
+    @Column(name = "NAME")
+    private String name;
+
     @Builder public User(String email,
                 String password,
                 boolean oauthAt,
-                String nickName) {
+                String nickName,
+                String phoneNumber,
+                String name) {
         this.email = email;
         this.password = password;
         this.oauthAt = oauthAt;
         this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
     }
 
     // 생성자, 게터, 세터, 다른 메서드
