@@ -90,7 +90,8 @@ function Main() {
   }
 
   const kakaLogin_java = async (e) =>{
-    window.location.href = 'http://localhost:8080/oauth/kakao';
+    debugger;
+    window.location.href = 'http://localhost:8080/oauth2/authorization/kakao'; 
   }
 
   const onChange = e => {
@@ -205,30 +206,6 @@ function Main() {
                     name="email"
                     onChange={onChange}/>
 
-                  <TextField
-                    style={{width :"300px", marginTop:'8px'}}
-                    label="핸드폰 번호"
-                    variant="outlined"
-                    size="small"
-                    name="phoneNumber"
-                    onChange={onChange}/>
-
-                  <TextField
-                    style={{width :"300px", marginTop:'8px'}}
-                    label="닉네임"
-                    variant="outlined"
-                    size="small"
-                    name="nickName"
-                    onChange={onChange}/>
-
-                  <TextField
-                    style={{width :"300px", marginTop:'8px'}}
-                    label="사용자 이름"
-                    variant="outlined"
-                    size="small"
-                    name="name"
-                    onChange={onChange}/>
-
                   <FormControl sx={{ margin: 1, width: '300px' }} variant="outlined">
                     <InputLabel size="small">비밀번호</InputLabel>
                     <OutlinedInput
@@ -249,8 +226,32 @@ function Main() {
                     />
                   </FormControl>
 
+                  {/* <TextField
+                    style={{width :"300px"}}
+                    label="핸드폰 번호"
+                    variant="outlined"
+                    size="small"
+                    name="phoneNumber"
+                    onChange={onChange}/> */}
+
+                  <TextField
+                    style={{width :"300px"}}
+                    label="닉네임"
+                    variant="outlined"
+                    size="small"
+                    name="nickName"
+                    onChange={onChange}/>
+
+                  <TextField
+                    style={{width :"300px", marginTop:'8px'}}
+                    label="사용자 이름"
+                    variant="outlined"
+                    size="small"
+                    name="name"
+                    onChange={onChange}/>
+
                   <Button 
-                    style={{width:"300px"}} 
+                    style={{width:"300px", marginTop:'8px'}} 
                     variant="contained"
                     onClick={(e)=>{alert("가입")}}>
                       가입

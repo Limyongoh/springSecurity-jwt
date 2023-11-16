@@ -1,4 +1,4 @@
-package com.todo.settingProject.oauth.type;
+package com.todo.settingProject.NoSecurity_Oauth.type;
 
 import java.util.Locale;
 

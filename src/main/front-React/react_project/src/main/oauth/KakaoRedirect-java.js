@@ -11,7 +11,7 @@ function KakaoRedirect_java() {
       try {
           // 카카오로부터 받아온 code를 서버에 전달하여 카카오로 회원가입 & 로그인한다
           debugger;
-          const response = await axios.get(`http://localhost:8080/oauth/login/kakao?code=${code}`);
+          const response = await axios.get(`http://localhost:8080/oauth2/login/kakao?code=${code}`);
           debugger;
           const data = response.data; // 응답 데이터
           console.log(data);

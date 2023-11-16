@@ -13,7 +13,7 @@ function App() {
             <Route path='/' element={<Main />} />
             {/* <Route path='/oauth/redirected/kakao' element={<KakaoRedirect_react />} /> */}
             <Route path='/oauth/redirected/kakao' element={<KakaoRedirect_java />} />
-            <Route path='/contnet' element={<Content />}/>
+            <Route path='/content' element={<Content />}/>
         </Routes>
       );
 }

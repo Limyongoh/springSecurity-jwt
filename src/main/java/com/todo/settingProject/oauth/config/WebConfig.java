@@ -1,6 +1,6 @@
 package com.todo.settingProject.oauth.config;
 
-import com.todo.settingProject.oauth.type.convert.OauthServerTypeConverter;
+import com.todo.settingProject.NoSecurity_Oauth.type.convert.OauthServerTypeConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
