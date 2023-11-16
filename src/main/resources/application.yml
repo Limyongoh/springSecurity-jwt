@@ -1,4 +1,8 @@
 spring:
+  profiles:
+    #application-{abc}.yml 파일 받아오기 -> include에 {abc}에 들어있는 문자의 yml 키,값 가져옴
+    #-> 해당 방법을 application profile 환경설정이라고 함
+    include: oauth, jwt
   datasource:
     url: jdbc:postgresql://localhost:5432/todo_project1
     username: todo
