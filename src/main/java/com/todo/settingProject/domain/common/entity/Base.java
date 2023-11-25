@@ -15,9 +15,6 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)// @createDate, @modifyDate 자동 사용하기 위해 추가
 public class Base{
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long id;
 
         @Column(name = "DEL_AT")
         @Convert(converter = YesNoConverter.class)

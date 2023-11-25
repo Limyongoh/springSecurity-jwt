@@ -48,7 +48,7 @@ public class OauthServiceImpl implements OauthService {
                     .name("")
                     //.phoneNumber("")
                     .oauthAt(true)
-                    .createBy(user.getEmail())
+                    //.createBy(user.getEmail())
                     .build();
 
             userRepository.save(user);

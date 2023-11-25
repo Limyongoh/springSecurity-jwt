@@ -21,7 +21,7 @@ public record KakaoUserResponse(
 
     public User toDomain() {
         return User.builder()
-                .oauthId(new OauthId(id, OauthServerType.KAKAO))
+                //.oauthId(new OauthId(id, OauthServerType.KAKAO))
                 .nickName(kakaoAccount.profile.nickname)
                 //.profileImageUrl(kakaoAccount.profile.profileImageUrl)
                 .email(kakaoAccount.email)

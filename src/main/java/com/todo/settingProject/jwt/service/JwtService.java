@@ -2,10 +2,10 @@ package com.todo.settingProject.jwt.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.todo.settingProject.domain.repository.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,9 +15,11 @@ import java.util.Date;
 import java.util.Optional;
 
 @Slf4j
+@Getter
 @Service
 @RequiredArgsConstructor
 public class JwtService {
+    @Value("${jwt.secretKey}")
     private String secretKey;
 
     @Value("${jwt.access.expiration}")
@@ -142,9 +144,13 @@ public class JwtService {
     public void updateRefeshToken(String email, String refreshToken){
         userRepository.findByEmail(email)
                 .ifPresentOrElse(
-                        user -> user.updateRefreshToken(refreshToken),
+                        user -> {
+                            user.updateRefreshToken(refreshToken);
+                            userRepository.save(user);
+                        },
                         ()-> new Exception("일치하는 회원이 없습니다.")
                 );
+        log.info("refresh token update");
     }
 
     /**

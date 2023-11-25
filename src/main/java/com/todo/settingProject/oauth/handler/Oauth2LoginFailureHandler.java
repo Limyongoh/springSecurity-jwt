@@ -21,5 +21,6 @@ public class Oauth2LoginFailureHandler implements AuthenticationFailureHandler {
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         response.getWriter().write("소셜 로그인 실패");
         log.info("소셜 로그인 실패! 에러메세지 : {}",exception.getMessage());
+        response.sendRedirect("http://localhost:3000");
     }
 }

@@ -26,6 +26,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -33,14 +34,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final ObjectMapper objectMapper;
-    private final OauthService oauthService;
-    private  final OauthCustom oauthCustom;
 
     private final LoginService loginService;
-
     private final JwtService jwtService;
+
     private final UserRepository userRepository;
 
+    private final OauthCustom oauthCustom;
     private final Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
     private final Oauth2LoginFailureHandler oauth2LoginFailureHandler;
 
@@ -67,24 +67,28 @@ public class SecurityConfig {
             );
 
         // url 별로 권한 설정관리 가능
-        http.authorizeHttpRequests(auth->
-            auth
-                .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**").permitAll()
-                .requestMatchers("/sign-up").permitAll() // 회원가입 접근 가능
-                .anyRequest().authenticated() // 위의 경로 이외에는 모두 인증된 사용자만 접근 가능
+        http
+            .authorizeHttpRequests(auth->
+                auth
+                    .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**").permitAll()
+                    .requestMatchers("/sign-up").permitAll() // 회원가입 접근 가능
+                    .anyRequest().authenticated() // 위의 경로 이외에는 모두 인증된 사용자만 접근 가능
         );
 
         // oauth2 로그인 관련설정
-        http.oauth2Login(oauthLogin->
-            oauthLogin
-                    .userInfoEndpoint(endPoint->
-                            endPoint.userService(oauthCustom))
-                    // 위의 oauthCustom 수행후 로그인 성공 시 custom handler 수행
-                    .successHandler(oauth2LoginSuccessHandler)
-                    // 위의 oauthCustom 수행후 로그인 실패시 시 custom handler 수행
-                    .failureHandler(oauth2LoginFailureHandler)
+        http
+            .oauth2Login(oauthLogin->
+                oauthLogin
+                        .userInfoEndpoint(endPoint->
+                                endPoint.userService(oauthCustom))
+                        // 위의 oauthCustom 수행후 로그인 성공 시 custom handler 수행
+                        .successHandler(oauth2LoginSuccessHandler)
+                        // 위의 oauthCustom 수행후 로그인 실패시 시 custom handler 수행
+                        .failureHandler(oauth2LoginFailureHandler)
         );
 
+        http.addFilterAfter(customJsonUsernamePasswordAuthenticationFilter(), LogoutFilter.class);
+        http.addFilterBefore(jwtAuthenticationProcessingFilter(), CustomJsonUsernamePasswordFiter.class);
 
         return http.build();
 

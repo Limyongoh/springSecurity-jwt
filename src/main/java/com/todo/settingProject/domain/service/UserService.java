@@ -13,13 +13,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public void signup (UserDto userDto) throws  Exception{
+    public void signup (UserDto userDto) throws Exception{
         if(userRepository.findByEmail(userDto.getEmail()).isPresent()){
             throw new Exception("이미 존재하는 이메일 입니다.");
         }
+
         if(userRepository.findByNickName(userDto.getNickName()).isPresent()){
             throw new Exception("이미 존재하는 닉네임 입니다.");
         }
+
         User user = User.builder()
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
